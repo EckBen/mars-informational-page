@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Informational Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center">
+          <h1>Mission to Mars</h1>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+    
+        <!-- Mars Data -->
+        <div class="row justify-content-around">
+          <div class="col-md-12 align-self-center">
+            <h2 class="heading">Latest Mars News</h2>
+            <h3>{{ mars_data.news.news_title }}</h3>
+            <p>{{ mars_data.news.news_text }}</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-around">
+            <div class="col-md-7 align-self-center">
+                <h2 class="heading">Featured Mars Image</h2>
+                <img src="{{ mars_data.jpl_img }}" alt="Image scraped from NASA Mars webpage." style="max-width: 600px;">
+            </div>
+            <div class="col-md-4 align-self-center">
+                <div class="row justify-content-around">
+                    <div class="col-12 align-self-center">
+                        <h3>Current Weather on Mars</h3>
+                        <p>{{ mars_data.weather }}</p>
+                    </div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-12 align-self-center">
+                        <h3>Mars Facts</h3>
+                        {% for table in tables %}
+                            {{ titles[loop.index] }}
+                            {{ table | safe }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-11 align-self-center">
+                <h2>Mars Hemispheres</h2>
+                <div class="row justify-content-around">
+                    <div class="col-md-5 align-self-center">
+                        <div class="card text-center" style="width: 47rem; border: 1px solid lightslategray;">
+                            <img src="{{ mars_data.hemi[0].img_url }}" class="card-img-top img-fluid" alt="{{ mars_data.hemi.title }}" style="max-width: 450px;">
+                            <div class="card-body">
+                                <p class="card-text"><h3>{{ mars_data.hemi[0].title }}</h3></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 align-self-center">
+                        <div class="card text-center" style="width: 47rem; border: 1px solid lightslategray;">
+                            <img src="{{ mars_data.hemi[1].img_url }}" class="card-img-top img-fluid" alt="{{ mars_data.hemi[1].title }}" style="max-width: 450px;">
+                            <div class="card-body">
+                                <p class="card-text"><h3>{{ mars_data.hemi[1].title }}</h3></p>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row justify-content-around">
+                    <div class="col-md-5 align-self-center">
+                        <div class="card text-center" style="width: 47rem; border: 1px solid lightslategray;">
+                            <img src="{{ mars_data.hemi[2].img_url }}" class="card-img-top img-fluid" alt="{{ mars_data.hemi[2].title }}" style="max-width: 450px;">
+                            <div class="card-body">
+                                <p class="card-text"><h3>{{ mars_data.hemi[2].title }}</h3></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 align-self-center">
+                        <div class="card text-center" style="width: 47rem; border: 1px solid lightslategray;">
+                            <img src="{{ mars_data.hemi[3].img_url }}" class="card-img-top img-fluid" alt="{{ mars_data.hemi[3].title }}" style="max-width: 450px;">
+                            <div class="card-body">
+                                <p class="card-text"><h3>{{ mars_data.hemi[3].title }}</h3></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>
